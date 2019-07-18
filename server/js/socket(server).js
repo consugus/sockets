@@ -14,18 +14,21 @@ io.on("connection", (client) => {
         console.log("usuario desconectado");
     });
 
-    client.on("enviarMensaje",  (message, callback) => {
-        // console.log(message);
-        // callback();
-        if (message.user) { // es user porque en le obj que estamos mandando desde el server le pusimos ¨user¨
-            callback({
-                resp: "todo salió genial!"
-            });
-        } else {
-                callback({
-                    resp: "Algo anduvo como el tuje :("
-                });
-        }
+    client.on("enviarMensaje",  (data, callback) => {
+        console.log(data);
+
+        client.broadcast.emit("enviarMensaje", data)
+
+
+        // if (message.user) { // es user porque en le obj que estamos mandando desde el server le pusimos ¨user¨
+        //     callback({
+        //         resp: "todo salió genial!"
+        //     });
+        // } else {
+        //         callback({
+        //             resp: "Algo anduvo como el tuje :("
+        //         });
+        // }
     });
 
 });

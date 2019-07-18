@@ -1,5 +1,7 @@
-// console.log("esto es una prueba");
+// Estableciendo la conexión con el servidor
 var socket = io();
+
+// Interactuando con el servidor
 socket.on("connect", function (){
     console.log("conectado al servidor");
 });
@@ -13,7 +15,7 @@ socket.emit("enviarMensaje", {
     user: "Gustavo Jorge",
     message: "Hola mundo"
 }, function (resp){
-    console.log("Respuesta del ServidorÑ ", resp);
+    console.log("Respuesta del Servidor ", resp);
 });
 
 socket.on("enviarMensaje", function(message){
